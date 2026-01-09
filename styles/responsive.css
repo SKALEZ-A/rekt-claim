@@ -1,0 +1,528 @@
+/*
+ * REKT Website - Responsive Styles
+ * Mobile-first responsive design for all screen sizes
+ */
+
+/* ==============================================
+   MOBILE FIRST APPROACH
+   Base styles are mobile-first, then enhanced for larger screens
+   ============================================== */
+
+/* ==============================================
+   SMALL SCREENS (640px and up)
+   ============================================== */
+
+@media (min-width: 640px) {
+  /* Navigation improvements */
+  .nav-container {
+    padding: 0 var(--space-6);
+  }
+
+  /* Hero section enhancements */
+  .hero-title-main {
+    font-size: var(--font-size-5xl);
+  }
+
+  .hero-description {
+    font-size: var(--font-size-xl);
+  }
+
+  /* About section grid layout */
+  .about-features {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  /* Community links grid */
+  .community-links {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  /* Tokenomics side-by-side layout */
+  .tokenomics-content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+
+  /* Features grid layout */
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  /* Footer grid layout */
+  .footer-content {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+/* ==============================================
+   MEDIUM SCREENS (768px and up)
+   ============================================== */
+
+@media (min-width: 768px) {
+  /* Navigation container padding */
+  .nav-container {
+    padding: 0 var(--space-8);
+  }
+
+  /* Section padding increases */
+  .section {
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+  }
+
+  /* Section title sizes */
+  .section-title {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--space-6);
+  }
+
+  /* Hero section enhancements */
+  .hero-title-sub {
+    font-size: var(--font-size-xl);
+  }
+
+  /* About section layout changes */
+  .about-content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+
+  .about-text {
+    order: 1;
+  }
+
+  .about-image {
+    order: 2;
+  }
+
+  /* Buy steps horizontal layout */
+  .buy-step {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  /* Community stats grid */
+  .community-stats {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  /* Roadmap timeline improvements */
+  .roadmap-timeline::before {
+    left: 50%;
+  }
+
+  .roadmap-item {
+    padding-left: calc(50% + var(--space-8));
+  }
+
+  .roadmap-marker {
+    left: calc(50% - 8px);
+  }
+}
+
+/* ==============================================
+   LARGE SCREENS (1024px and up)
+   ============================================== */
+
+@media (min-width: 1024px) {
+  /* Container max-width and padding */
+  .container {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+
+  /* Section padding for desktop */
+  .section {
+    padding-top: var(--space-24);
+    padding-bottom: var(--space-24);
+  }
+
+  /* Section titles - largest size */
+  .section-title {
+    font-size: var(--font-size-5xl);
+  }
+
+  /* Hero section - maximum impact */
+  .hero-title-main {
+    font-size: var(--font-size-6xl);
+  }
+
+  /* Desktop navigation is fully visible */
+  .nav-menu {
+    position: static;
+    top: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    flex-direction: row;
+    padding-top: 0;
+    gap: var(--space-6);
+    box-shadow: none;
+  }
+
+  .nav-menu.active {
+    left: auto;
+  }
+
+  /* Hide mobile menu toggle on desktop */
+  .nav-toggle {
+    display: none;
+  }
+
+  /* Hero buttons side by side */
+  .hero-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  /* Hero stats in a better layout */
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 600px;
+  }
+
+  /* About section - text first, image second */
+  .about-text {
+    order: 1;
+  }
+
+  .about-image {
+    order: 2;
+  }
+
+  /* Features section - better grid */
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Community section - better link layout */
+  .community-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Buy steps - better spacing */
+  .buy-steps {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  /* Footer - full grid layout */
+  .footer-content {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* ==============================================
+   EXTRA LARGE SCREENS (1280px and up)
+   ============================================== */
+
+@media (min-width: 1280px) {
+  /* Maximum container width */
+  .container {
+    max-width: var(--container-2xl);
+  }
+
+  /* Hero section - even more impact */
+  .hero-content {
+    padding: var(--space-12) 0;
+  }
+
+  /* Features section - wider cards */
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-10);
+  }
+
+  /* Roadmap - more spacing */
+  .roadmap-item {
+    padding-left: calc(50% + var(--space-12));
+  }
+}
+
+/* ==============================================
+   MOBILE SPECIFIC ADJUSTMENTS
+   ============================================== */
+
+/* Small mobile phones */
+@media (max-width: 374px) {
+  /* Reduce padding on very small screens */
+  .container {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+
+  /* Smaller hero text */
+  .hero-title-main {
+    font-size: var(--font-size-3xl);
+  }
+
+  .hero-description {
+    font-size: var(--font-size-base);
+  }
+
+  /* Stack hero buttons vertically */
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-large {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* Adjust section padding */
+  .section {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+  }
+
+  /* Smaller section titles */
+  .section-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  /* Simplify about features */
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stack community links */
+  .community-links {
+    grid-template-columns: 1fr;
+  }
+
+  /* Simplify tokenomics layout */
+  .tokenomics-content {
+    grid-template-columns: 1fr;
+  }
+
+  /* Single column features */
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==============================================
+   LANDSCAPE MOBILE ORIENTATION
+   ============================================== */
+
+@media (max-width: 767px) and (orientation: landscape) {
+  /* Reduce hero height on landscape mobile */
+  .hero {
+    min-height: 80vh;
+  }
+
+  /* Adjust hero content padding */
+  .hero-content {
+    padding: var(--space-6) 0;
+  }
+
+  /* Smaller hero text in landscape */
+  .hero-title-main {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-1);
+  }
+
+  .hero-title-sub {
+    font-size: var(--font-size-base);
+  }
+
+  .hero-description {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-4);
+  }
+
+  /* Reduce section padding */
+  .section {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+}
+
+/* ==============================================
+   HIGH DPI / RETINA DISPLAYS
+   ============================================== */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Ensure sharp images on high DPI displays */
+  .hero-bg-img,
+  .about-img,
+  .feature-img,
+  .nav-logo-img,
+  .footer-logo-img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ==============================================
+   PRINT STYLES
+   ============================================== */
+
+@media print {
+  /* Hide navigation and interactive elements */
+  .navbar,
+  .nav-toggle,
+  .hero-scroll,
+  .btn,
+  .community-link,
+  .social-link,
+  .buy-cta {
+    display: none !important;
+  }
+
+  /* Simplify hero section for print */
+  .hero {
+    min-height: auto;
+    padding: var(--space-8) 0;
+    background: none !important;
+  }
+
+  .hero-background,
+  .hero-overlay {
+    display: none;
+  }
+
+  .hero-content {
+    color: var(--black) !important;
+  }
+
+  .hero-title-main,
+  .hero-title-sub {
+    color: var(--black) !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure good contrast for print */
+  body {
+    color: var(--black) !important;
+    background: var(--white) !important;
+  }
+
+  .section {
+    page-break-inside: avoid;
+  }
+
+  /* Print-friendly footer */
+  .footer {
+    background: var(--white) !important;
+    color: var(--black) !important;
+    border-top: 2px solid var(--black);
+  }
+
+  .footer-social,
+  .footer-disclaimer {
+    display: none;
+  }
+}
+
+/* ==============================================
+   ACCESSIBILITY & REDUCED MOTION
+   ============================================== */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable animations */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Remove hover effects that rely on transforms */
+  .feature-card:hover,
+  .community-link:hover,
+  .btn:hover,
+  .social-link:hover {
+    transform: none !important;
+  }
+
+  /* Keep color changes for hover states */
+  .nav-link:hover,
+  .faq-question:hover {
+    background-color: var(--primary-light);
+  }
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+  /* Increase border visibility */
+  .btn {
+    border-width: 3px;
+  }
+
+  .feature-card,
+  .tokenomics-item,
+  .roadmap-content,
+  .faq-item {
+    border-width: 2px;
+  }
+
+  /* Enhance focus indicators */
+  *:focus {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+
+  /* Improve text contrast */
+  .hero-description,
+  .about-description,
+  .feature-card-description,
+  .roadmap-description,
+  .step-description,
+  .faq-answer p {
+    color: var(--black);
+  }
+}
+
+/* ==============================================
+   DARK MODE PREPARATION
+   ============================================== */
+
+/* Dark mode variables and styles (for future implementation) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #000000;
+    --text-primary: var(--white);
+    --border-primary: rgba(74, 27, 122, 0.2);
+    --card-bg: #000000;
+  }
+
+  /* Basic dark mode styles */
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  .navbar {
+    background-color: rgba(52, 58, 64, 0.95);
+  }
+
+  .section-about,
+  .section-tokenomics,
+  .section-features,
+  .section-roadmap,
+  .section-community,
+  .section-how-to-buy,
+  .section-faq {
+    background-color: var(--bg-primary);
+  }
+
+  .feature-card,
+  .tokenomics-item,
+  .roadmap-content,
+  .faq-item {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+  }
+
+  .footer {
+    background-color: var(--black);
+  }
+}

